@@ -1,0 +1,64 @@
+{
+  "author": "Mark Perkins <mark@clearleft.com> / Simon Douglas adds a few extras",
+  "browserslist": [
+    "> 0.25%",
+    "not dead"
+  ],
+  "bugs": {
+    "url": "https://github.com/sidouglas/fractal-quickstart/issues"
+  },
+  "config": {
+    "fractal": {
+      "port": 3000,
+      "projectName": "Your Project"
+    }
+  },
+  "dependencies": {},
+  "description": "Fractal starter with webpack dev middleware",
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/plugin-proposal-export-default-from": "^7.8.3",
+    "@babel/plugin-transform-runtime": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@frctl/fractal": "^1.2.1",
+    "autoprefixer": "^9.7.6",
+    "babel-loader": "^8.1.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "css-loader": "^3.5.3",
+    "fs-extra": "^9.0.0",
+    "http-proxy-middleware": "^1.0.3",
+    "kill-port": "^1.6.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "node-sass": "^4.14.1",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.43.0",
+    "webpack-bundle-analyzer": "^3.7.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-middleware": "^3.7.2",
+    "webpack-hot-middleware": "^2.25.0",
+    "webpack-merge": "^4.2.2",
+    "webpack-svg-icon-system": "^0.3.4"
+  },
+  "homepage": "https://github.com/sidouglas/fractal-quickstart#readme",
+  "keywords": [
+    "fractal",
+    "fractal.build"
+  ],
+  "license": "MIT",
+  "main": "webpack.config.js",
+  "name": "fractal-quickstart",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sidouglas/fractal-quickstart.git"
+  },
+  "scripts": {
+    "analyze": "npm run prod -- --env.presets analyze",
+    "dev": "node ./fractalServer/fractal.js",
+    "export": "npm run prod && npm run serve -- export",
+    "prod": "npm run webpack -- --env.mode production",
+    "webpack": "webpack"
+  },
+  "version": "0.1.0"
+}
