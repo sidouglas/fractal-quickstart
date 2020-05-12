@@ -35,5 +35,6 @@ module.exports = ({ port }) => {
       ],
       ignoreInitial: true,
     },
+    files: '**/dist/app.css'
   }
 }

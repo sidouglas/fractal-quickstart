@@ -56,7 +56,7 @@
   "scripts": {
     "analyze": "npm run prod -- --env.presets analyze",
     "dev": "node ./fractalServer/fractal.js",
-    "export": "npm run prod && npm run serve -- export",
+    "export": "npm run prod && npm run dev -- export",
     "prod": "npm run webpack -- --env.mode production",
     "webpack": "webpack"
   },
