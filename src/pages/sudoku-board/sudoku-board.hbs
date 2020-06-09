@@ -1,0 +1,9 @@
+<div class="o-container">
+  <div
+    data-json="{{ stringify data }}"
+    id="sudoku-board"
+  >
+    <div v-if="!$data">LOADING</div>
+    <sudoku-board v-cloak v-bind="$data"></sudoku-board>
+  </div>
+</div>

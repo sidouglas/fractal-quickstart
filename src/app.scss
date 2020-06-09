@@ -1,17 +1,6 @@
-p {
-  color: blue;
-}
+@import "~@style/_config";
 
-.u-visually-hidden {
-  border: none !important;
-  clip: rect(0 0 0 0) !important;
-  height: 1px !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  padding: 0 !important;
-  position: absolute !important;
-  white-space: nowrap !important;
-  width: 1px !important;
-}
-
-@import "~@components/example/example";
+@import "~reset-css/reset.css";
+@import "~@style/objects/_all";
+@import "~@components/sudoku-cell/sudoku-cell";
+@import "~@pages/sudoku-board/sudoku-board";

@@ -1,0 +1,39 @@
+.sudoku-board {
+  align-content: center;
+  display: grid;
+  height: 100%;
+  justify-content: center;
+  margin: 0 auto;
+  min-height: 100vw;
+  border: rem(1) solid $sudoku-board-primary-border;
+
+  @include mq($app-max-width) {
+    min-height: $app-max-width;
+  }
+}
+
+.sudoku-board__item {
+  border: rem(2) solid $sudoku-board-primary-border;
+
+  // @link https://codepen.io/sdobson/pen/aEWBQw
+  .sudoku-board--size-9 & {
+    &:nth-child(3n) {
+      border-right-width: rem(4);
+    }
+    &:nth-child(n):nth-child(-n+9) {
+      border-top-width: rem(4);
+    }
+    &:nth-child(n+73):nth-child(-n+81) {
+      border-bottom-width: rem(4);
+    }
+    &:nth-child(9n+1) {
+      border-left-width: rem(4);
+    }
+    &:nth-child(n+19):nth-child(-n+27) {
+      border-bottom-width: rem(4);
+    }
+    &:nth-child(n+46):nth-child(-n+54) {
+      border-bottom-width: rem(4);
+    }
+  }
+}

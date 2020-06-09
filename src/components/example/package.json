@@ -1,4 +1,0 @@
-{
-  "main": "example.js",
-  "//": "When this was written, webpack directory-named-webpack-plugin was not working with HMR"
-}

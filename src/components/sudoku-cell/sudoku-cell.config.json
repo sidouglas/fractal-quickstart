@@ -1,0 +1,7 @@
+{
+  "context": {
+    "title": "Sudoku Cell",
+    "value": 4,
+    "max" : 9
+  }
+}

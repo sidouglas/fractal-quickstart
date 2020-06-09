@@ -1,0 +1,67 @@
+$m-responsive-tween-min-width: 320px !default;
+$m-responsive-tween-max-width: 1200px !default;
+
+@mixin responsive-tween($min-width-and-value, $max-width-and-value, $properties: font-size, $output-default: true, $important: false) {
+  $min-width: $m-responsive-tween-min-width;
+  $min-value: null;
+  $max-width: $m-responsive-tween-max-width;
+  $max-value: null;
+  $max-minus-min-value: null;
+  $important: if($important, if($important, !important, null), null);
+
+  @if (type-of($min-width-and-value) == "map") {
+    $min-width: nth(map-keys($min-width-and-value), 1);
+    $min-value: nth(map-values($min-width-and-value), 1);
+  }
+  @else if (type-of($min-width-and-value) == "list") {
+    $min-width: nth($min-width-and-value, 1);
+    $min-value: nth($min-width-and-value, 2);
+  }
+  @else if (type-of($min-width-and-value) == "number") {
+    $min-value: $min-width-and-value;
+  }
+
+  @if (type-of($max-width-and-value) == "map") {
+    $max-width: nth(map-keys($max-width-and-value), 1);
+    $max-value: nth(map-values($max-width-and-value), 1);
+  }
+  @else if (type-of($max-width-and-value) == "list") {
+    $max-width: nth($max-width-and-value, 1);
+    $max-value: nth($max-width-and-value, 2);
+  }
+  @else if (type-of($max-width-and-value) == "number") {
+    $max-value: $max-width-and-value;
+  }
+
+  $min-width: strip-unit($min-width) * 1px;
+  $max-minus-min-value: strip-unit($max-value - $min-value);
+
+  @if (unit($min-value) == "rem" and unit($max-value) == "rem") {
+    $max-minus-min-value: strip-unit($max-minus-min-value * $f-rem-context);
+  }
+
+  @if ($min-width > 0) {
+    @if ($output-default) {
+      @each $property in $properties {
+        #{$property}: $min-value #{$important};
+      }
+    }
+
+    @include mq($min-width) {
+      @each $property in $properties {
+        #{$property}: calc(#{$min-value} + #{$max-minus-min-value} * (100vw - #{$min-width}) / #{strip-unit($max-width - $min-width)}) #{$important};
+      }
+    }
+  }
+  @else {
+    @each $property in $properties {
+      #{$property}: calc(#{$min-value} + #{$max-minus-min-value} * (100vw - #{$min-width}) / #{strip-unit($max-width - $min-width)}) #{$important};
+    }
+  }
+
+  @include mq($max-width) {
+    @each $property in $properties {
+      #{$property}: $max-value #{$important};
+    }
+  }
+}

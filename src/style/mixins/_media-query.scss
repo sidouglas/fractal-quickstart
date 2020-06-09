@@ -1,0 +1,16 @@
+@mixin media-query($width, $feature: min-width) {
+  @if ($width == 0) {
+    @content;
+  }
+  @else {
+    @media (#{$feature}: em($width, 16)) {
+      @content;
+    }
+  }
+}
+
+@mixin mq($args...) {
+  @include media-query($args...) {
+    @content;
+  };
+}

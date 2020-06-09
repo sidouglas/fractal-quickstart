@@ -1,0 +1,8 @@
+@import "~@style/functions/all";
+@import "~@style/mixins/all";
+
+$app-max-width-px: 800px;
+$app-max-width: rem($app-max-width-px);
+
+$sudoku-board-bg-color: #fff;
+$sudoku-board-primary-border: #999;

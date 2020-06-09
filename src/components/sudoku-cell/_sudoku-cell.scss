@@ -1,0 +1,54 @@
+$sudoku-cell__bg-color: #ccc !default;
+$sudoku-cell__error-bg-color: #ED2A39 !default;
+$sudoku-cell__hover-primary: #F3F63D !default;
+
+.sudoku-cell {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+
+.sudoku-cell__input {
+  @include responsive-tween(rem(20), ($app-max-width-px: rem(60)));
+
+  -moz-appearance: textfield;
+  border: 0;
+  caret-color: transparent;
+  cursor: pointer;
+  height: inherit;
+  text-align: center;
+  width: inherit;
+
+  &:disabled {
+    background: $sudoku-cell__bg-color;
+    border: 0;
+    color: inherit;
+    cursor: not-allowed;
+  }
+
+  &:enabled:focus {
+    background: $sudoku-cell__hover-primary;
+  }
+
+  &:enabled:hover {
+    background: lighten($sudoku-cell__hover-primary, 20);
+  }
+
+  &:invalid,
+  .sudoku-cell--is-invalid & {
+    background-color: $sudoku-cell__error-bg-color;
+  }
+
+  &::selection {
+    background: none;
+  }
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    margin: 0;
+  }
+}
+
+

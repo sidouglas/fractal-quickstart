@@ -1,7 +1,3 @@
----
-title: Developer Test - Writing a Sudoku Game
----
-
 Was always going to be a challenge to complete within the time frame. 
 
 I struggled with validating regions. After much toil, I hard coded the region bounds. 
@@ -24,5 +20,5 @@ The functions/mixins/objects inside the style directory are NRL toolkit scss fil
 This fractal setup is my own — you can see it here https://github.com/sidouglas/fractal-quickstart
 
 ```
-npm run dev  // will run the fractal instance
+yarn dev  // will run the fractal instance
 ```

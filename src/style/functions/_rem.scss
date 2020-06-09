@@ -1,0 +1,5 @@
+$f-rem-context: 16px !default;
+
+@function rem($target, $context: $f-rem-context) {
+  @return strip-unit($target / $context) * 1rem;
+}

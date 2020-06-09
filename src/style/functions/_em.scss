@@ -1,0 +1,6 @@
+@function em($target, $context: 16, $unitless: false) {
+  $unit: if($unitless, 1, 1em);
+  $target: if(unit($target) == "rem", $target * $f-rem-context, $target);
+
+  @return strip-unit($target / $context) * $unit;
+}
