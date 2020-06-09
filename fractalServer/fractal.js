@@ -16,7 +16,7 @@ require('./theme.js')(fractal)
 fractal.set('project.title', projectName)
 
 //Tell Fractal where to look for components.
-fractal.components.set('path', path.join(__dirname, './../src/components'))
+fractal.components.set('path', path.join(__dirname, './../src'))
 
 fractal.docs.set('path', path.join(__dirname, './../src/docs'))
 

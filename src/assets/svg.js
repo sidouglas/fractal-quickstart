@@ -1,1 +1,1 @@
-export fractal from './icons/fractal.svg';
+export fractal from "./icons/fractal.svg";

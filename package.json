@@ -13,26 +13,35 @@
       "projectName": "Your Project"
     }
   },
-  "dependencies": {},
+  "dependencies": {
+    "reset-css": "^5.0.1",
+    "vue": "^2.6.11"
+  },
   "description": "Fractal starter with webpack dev middleware",
   "devDependencies": {
-    "@babel/core": "^7.9.6",
+    "@babel/core": "^7.10.2",
     "@babel/plugin-proposal-export-default-from": "^7.8.3",
     "@babel/plugin-transform-runtime": "^7.9.6",
-    "@babel/preset-env": "^7.9.6",
+    "@babel/preset-env": "^7.10.2",
     "@frctl/fractal": "^1.2.1",
     "autoprefixer": "^9.7.6",
+    "babel-jest": "^26.0.1",
     "babel-loader": "^8.1.0",
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.5.3",
+    "eslint-config-prettier": "^6.11.0",
     "fs-extra": "^9.0.0",
     "http-proxy-middleware": "^1.0.3",
+    "jest": "^26.0.1",
     "kill-port": "^1.6.0",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.14.1",
     "postcss-loader": "^3.0.0",
+    "prettier": "^2.0.5",
     "sass-loader": "^8.0.2",
     "style-loader": "^1.2.1",
+    "vue-loader": "^15.9.2",
+    "vue-template-compiler": "^2.6.11",
     "webpack": "^4.43.0",
     "webpack-bundle-analyzer": "^3.7.0",
     "webpack-cli": "^3.3.11",
@@ -58,7 +67,8 @@
     "dev": "node ./fractalServer/fractal.js",
     "export": "npm run prod && npm run dev -- export",
     "prod": "npm run webpack -- --env.mode production",
-    "webpack": "webpack"
+    "webpack": "webpack",
+    "test": "jest"
   },
   "version": "0.1.0"
 }
