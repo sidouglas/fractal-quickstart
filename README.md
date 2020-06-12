@@ -18,6 +18,8 @@ This extends the fractal cli setup project with a few more batteries included:
 - Scss
 - Fractal Export
 - A few Handlebar helpers, you can add your own
+- Vue boilerplate added
+- Jest added
 
 Everything must be in the /dist directory in order to be served.
 
