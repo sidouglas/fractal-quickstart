@@ -23,7 +23,7 @@
     "@babel/plugin-proposal-export-default-from": "^7.8.3",
     "@babel/plugin-transform-runtime": "^7.9.6",
     "@babel/preset-env": "^7.10.2",
-    "@frctl/fractal": "^1.2.1",
+    "@frctl/fractal": "^1.3.0",
     "autoprefixer": "^9.7.6",
     "babel-jest": "^26.0.1",
     "babel-loader": "^8.1.0",
@@ -64,7 +64,7 @@
   },
   "scripts": {
     "analyze": "npm run prod -- --env.presets analyze",
-    "dev": "node ./fractalServer/fractal.js",
+    "dev": "node fractal.config.js",
     "export": "npm run prod && npm run dev -- export",
     "prod": "npm run webpack -- --env.mode production",
     "webpack": "webpack",
