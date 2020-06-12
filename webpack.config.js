@@ -1,48 +1,54 @@
 // eslint disable import/dynamic-require
 //@see https://github.com/TheLarkInn/webpack-workshop-2018
 // this is the base webpack configuration - prod and dev extend this common file.
-const autoPrefixerPlugin = require('autoprefixer')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const path = require('path')
-const presetConfig = require('./webpack/loadPresets')
-const SvgStorePlugin = require('webpack-svg-icon-system/lib/SvgStorePlugin')
-const webpackMerge = require('webpack-merge')
-
+const autoPrefixerPlugin = require("autoprefixer");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const path = require("path");
+const presetConfig = require("./webpack/loadPresets");
+const SvgStorePlugin = require("webpack-svg-icon-system/lib/SvgStorePlugin");
+const webpackMerge = require("webpack-merge");
+const { VueLoaderPlugin } = require("vue-loader");
 // eslint disable import/dynamic-require
-const modeConfig = (env) => require(`./webpack/webpack.${env}`)(env)
+const modeConfig = (env) => require(`./webpack/webpack.${env}`)(env);
 
-module.exports = ({ mode, presets } = {
-  mode: 'production',
-  presets: [],
-}) => {
+module.exports = (
+  { mode, presets } = {
+    mode: "production",
+    presets: [],
+  }
+) => {
   return webpackMerge(
     {
       mode,
       entry: {
-        app: './src/app.js',
+        app: "./src/app.js",
       },
       module: {
         rules: [
           {
+            test: /\.vue$/,
+            loader: "vue-loader",
+          },
+          {
             test: /\.js$/,
             exclude: /(node_modules)/,
             use: {
-              loader: 'babel-loader',
+              loader: "babel-loader",
               options: {
                 presets: [
                   [
-                    '@babel/preset-env',
+                    "@babel/preset-env",
                     {
                       modules: false,
                       useBuiltIns: false,
-                      targets: '> 0.25%, not dead',
+                      targets: "> 0.25%, not dead",
                     },
                   ],
                 ],
                 plugins: [
-                  '@babel/plugin-transform-runtime',
-                  '@babel/plugin-proposal-export-default-from',
+                  "@babel/plugin-transform-runtime",
+                  "@babel/plugin-proposal-export-default-from",
                 ],
               },
             },
@@ -58,20 +64,20 @@ module.exports = ({ mode, presets } = {
                 },
               },
               {
-                loader: 'css-loader',
+                loader: "css-loader",
                 options: {
                   sourceMap: true,
                 },
               },
               {
-                loader: 'postcss-loader',
+                loader: "postcss-loader",
                 options: {
                   plugins: [autoPrefixerPlugin],
                   sourceMap: true,
                 },
               },
               {
-                loader: 'sass-loader',
+                loader: "sass-loader",
                 options: {
                   sourceMap: true,
                 },
@@ -80,49 +86,42 @@ module.exports = ({ mode, presets } = {
           },
           {
             test: /\.(png|jpe?g|svg|gif|woff|woff2)$/,
-            loader: 'file-loader?name=public/[hash].[ext]',
-            exclude: [
-              /node_modules/,
-              /assets\/icons/,
-            ],
+            loader: "file-loader?name=public/[hash].[ext]",
+            exclude: [/node_modules/, /assets\/icons/],
           },
           {
             test: /icons([\/\\]).*\.svg$/,
-            loader: 'webpack-svg-icon-system',
+            loader: "webpack-svg-icon-system",
             options: {
-              name: 'icons-sprite.svg',
-              prefix: 'svg',
+              name: "icons-sprite.svg",
+              prefix: "svg",
             },
           },
         ],
       },
       output: {
-        path: path.resolve(__dirname, './dist'),
-        filename: '[name].js',
-        chunkFilename: '[name].chunk.js',
-        publicPath: '/',
-        library: 'APP',
+        path: path.resolve(__dirname, "./dist"),
+        filename: "[name].js",
+        chunkFilename: "[name].chunk.js",
+        publicPath: "/",
+        library: "APP",
       },
       plugins: [
-        new CopyWebpackPlugin([
-          {
-            from: path.join(__dirname, './src/public/some-example-that-will-generate-a-warning'),
-            to: path.join(__dirname, 'dist/some-example-to-be-copied-into-dist-directory'),
-          },
-        ]),
-        new MiniCssExtractPlugin(
-          {
-            filename: '[name].css',
-            chunkFilename: '[id].css',
-          },
-        ),
+        new MiniCssExtractPlugin({
+          filename: "[name].css",
+          chunkFilename: "[id].css",
+        }),
+        new VueLoaderPlugin(),
         new SvgStorePlugin(),
       ],
       resolve: {
-        extensions: ['.ts', '.js', '.json', '.scss'],
+        extensions: [".ts", ".js", ".json", ".scss"],
         alias: {
-          '@': path.resolve(__dirname, 'src'),
-          '@components': path.resolve(__dirname, 'src/components/'),
+          vue$: "vue/dist/vue.esm.js",
+          "@": path.resolve(__dirname, "src"),
+          "@components": path.resolve(__dirname, "src/components/"),
+          "@pages": path.resolve(__dirname, "src/pages/"),
+          "@style": path.resolve(__dirname, "src/style"),
         },
       },
     },
@@ -130,6 +129,6 @@ module.exports = ({ mode, presets } = {
     presetConfig({
       mode,
       presets,
-    }),
-  )
-}
+    })
+  );
+};

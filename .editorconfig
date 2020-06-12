@@ -1,7 +1,7 @@
 # http://editorconfig.org
 root = true
 
-[*.{css,html,js,scss,hbs}]
+[*.{css,html,js,scss,hbs,vue}]
 indent_style = space
 indent_size = 2
 end_of_line = lf
@@ -11,7 +11,3 @@ insert_final_newline = true
 
 [*.md]
 trim_trailing_whitespace = false
-
-[*.cshtml]
-indent_style = space
-indent_size = 2

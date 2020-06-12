@@ -1,0 +1,13 @@
+{
+  "arrowParens": "always",
+  "trailingComma": "all",
+  "wrap_attributes": "aligned-multiple",
+  "overrides": [
+    {
+      "files": "*.hbs",
+      "options": {
+        "parser": "html"
+      }
+    }
+  ]
+};
