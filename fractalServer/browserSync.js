@@ -1,18 +1,21 @@
-const webpackConfig = require('./../webpack.config')({ mode: 'development' })
+const webpackConfig = require("./../webpack.config")({ mode: "development" });
 
-const compiler = require('webpack')(webpackConfig)
+const compiler = require("webpack")(webpackConfig);
 
 // devServer options seems to have little effect on browser sync.
-const devMiddleware = require('webpack-dev-middleware')(compiler, webpackConfig.devServer)
-const hotMiddleware = require('webpack-hot-middleware')(compiler)
-const proxyMiddleware = require('./proxyMiddleware')
+const devMiddleware = require("webpack-dev-middleware")(
+  compiler,
+  webpackConfig.devServer
+);
+const hotMiddleware = require("webpack-hot-middleware")(compiler);
+const proxyMiddleware = require("./proxyMiddleware");
 
 module.exports = ({ port }) => {
   return {
     codeSync: true,
     cors: true,
     injectChanges: true,
-    logLevel: 'info', // debug | info | silent
+    logLevel: "info", // debug | info | silent
     middleware: [
       devMiddleware,
       hotMiddleware,
@@ -29,12 +32,9 @@ module.exports = ({ port }) => {
          we don't care if a scss file is changed, we'll look only the app.css file instead.
          Css changes by default are injected by browserSync.
       */
-      ignored: [
-        '**/dist/app.js',
-        '**/src/**/*.scss'
-      ],
+      ignored: ["**/dist/app.js", "**/src/**/*.scss"],
       ignoreInitial: true,
     },
-    files: '**/dist/app.css'
-  }
-}
+    files: "**/dist/app.css",
+  };
+};

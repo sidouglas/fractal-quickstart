@@ -46,7 +46,7 @@ if (process.argv.includes("export")) {
   );
 } else {
   const server = fractalConfig.web.server({
-    port: fractalSyncPort,
+    port: Number(fractalSyncPort),
     sync: true,
     watch: true,
   });
